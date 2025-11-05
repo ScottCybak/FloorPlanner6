@@ -1,0 +1,82 @@
+:root {
+    --bg-color: #fff;
+    --floor-color: var(--bg-color);
+    --wall-color: #666;
+    --helper-color: var(--wall-color);
+    --highlight-color: #ee48ca;
+
+    --ui-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --view-font-family: 'Courier New', Courier, monospace;
+    --font-size: 14px;
+    --zoom: 2;
+    --zoomed-font-size: calc((var(--font-size) / 2) - 1px);
+}
+
+.dark-mode {
+    
+}
+
+html {
+    font-size: var(--font-size);
+    height: 100vh;
+    width: 100vw;
+}
+body {
+    font-family: var(--ui-font-family);
+    font-size: 1rem;
+    background: var(--bg-color);
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    display: grid;
+}
+
+body, body * {
+    box-sizing: border-box;
+}
+
+pre {
+    font-size: .75rem;
+}
+
+.ui {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#ui-view {
+    position: absolute;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    zoom: var(--zoom);
+    font-family: var(--view-font-family);
+    font-size: var(--zoomed-font-size);
+}
+
+.item {
+    position: absolute;
+}
+
+.item-type-wall {
+    background: var(--wall-color);
+    &.highlight {
+        background: var(--highlight-color);
+    }
+}
+
+.rendered {
+    position: absolute;
+}
+
+.helper {
+    font-family: var(--view-font-family);
+}
+
+.highlight {
+    z-index: 1;
+    cursor: pointer;
+}
