@@ -4,16 +4,13 @@
     --wall-color: #666;
     --helper-color: var(--wall-color);
     --highlight-color: #ee48ca;
+    --warn-color: #d40000;
 
     --ui-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --view-font-family: 'Courier New', Courier, monospace;
     --font-size: 14px;
     --zoom: 2;
     --zoomed-font-size: calc((var(--font-size) / 2) - 1px);
-}
-
-.dark-mode {
-    
 }
 
 html {

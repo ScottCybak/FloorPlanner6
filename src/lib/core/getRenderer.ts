@@ -3,7 +3,7 @@ import { TYPE } from "lib/models/items/shared/TYPE";
 import { VIEW_TYPE } from "lib/models/View";
 import { DoorRenderer } from "./renderers/door.renderer";
 import { RendererBase } from "./renderers/shared/RendererBase";
-import { RoomRenderer } from "./renderers";
+import { RoomRenderer, StairwellRenderer } from "./renderers";
 
 type RendererConstructor<T extends ItemBase> = new (item: T, view: VIEW_TYPE) => RendererBase<T>;
 
@@ -12,6 +12,7 @@ const rendererMap: Partial<{
 }> = {
     [TYPE.DOOR]: DoorRenderer,
     [TYPE.ROOM]: RoomRenderer,
+    [TYPE.STAIRWELL]: StairwellRenderer,
 }
 
 export const getRenderer = (type: TYPE) => {

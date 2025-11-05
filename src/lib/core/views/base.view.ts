@@ -30,7 +30,6 @@ export abstract class ViewBase {
             this.setLength(e, length);
         });
         this.items.watch(items => this.addItems(e, items));
-        this.afterItemsAdded();
 
         return e;
     }
@@ -87,10 +86,6 @@ export abstract class ViewBase {
 
     setZ(element: HTMLElement, z = 0) {
         element.style.top = `${z}px`;
-    }
-
-    afterItemsAdded() {
-        console.log('afterItemsAdded');
     }
 
 }

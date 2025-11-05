@@ -13,7 +13,6 @@ class AppService {
     ): AppService {
         const target = appendTo instanceof Element ? appendTo : document.querySelector(appendTo);
         if (target) {
-            console.log('host element set', target);
             this.hostElement = target;
         } else {
             console.warn('unable to attach to an element, are you sure it exists?', appendTo);

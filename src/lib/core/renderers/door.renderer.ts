@@ -52,6 +52,10 @@ export class DoorRenderer extends RendererBase<DoorItem> {
                         outer.style.top = `-${size}px`;
                         inner.style.left = `-${size}px`;
                         break;
+                    case CARDINAL.SOUTH:
+                        inner.style.top = `-${size}px`;
+                        inner.style.left = `-${size}px`;
+                        break;
                     default:
                         console.warn('unhandled swing', swing);
                 }

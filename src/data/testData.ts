@@ -40,6 +40,10 @@ const s = {
     guest: {
         width: 0,
         length: 0,
+    },
+    stairs: {
+        width: 52,
+        length: 135,
     }
 }
 s.guest.width = (s.main.width - (s.ext * 2)) / 2;
@@ -126,6 +130,7 @@ function updateRegister(all: Item[]) {
 updateRegister(items);
 
 (register.get('main') as RoomItem).noHelper = true;
+(register.get('rear') as RoomItem).noHelper = true;
 // (register.get('rear') as RoomItem).noHelper = true;
 
 const addItemTo = (parentId: string, callback: (p: Item) => Item[]) => {
@@ -137,7 +142,7 @@ const addItemTo = (parentId: string, callback: (p: Item) => Item[]) => {
     }
 }
 addItemTo('main', parent => [
-    {
+    { // guest bedroom
         type: TYPE.ROOM,
         id: 'guest-bed',
         x: s.ext,
@@ -168,6 +173,51 @@ addItemTo('main', parent => [
                 ]
             },
         ],
+    }
+]);
+addItemTo('rear', parent => [
+    { // stairs
+        type: TYPE.ROOM,
+        id: 'stairs',
+        x: s.rear.width - s.stairs.width - s.ext,
+        y: s.ext,
+        noHelper: true,
+        items: [
+            {
+                type: TYPE.WALL,
+                id: 'stair-wall-w',
+                width: s.int,
+                length: s.stairs.length,
+            },
+            {
+                type: TYPE.WALL,
+                id: 'stair-wall-s',
+                width: s.stairs.width - s.int,
+                length: s.int,
+                x: s.int,
+                y: s.stairs.length - s.int - 2, // @todo - what is this nub?
+                items: [
+                    {
+                        type: TYPE.DOOR,
+                        id: 'stair-door',
+                        x: s.nub,
+                        size: s.doors.ext,
+                        hinge: CARDINAL.WEST,
+                        swing: CARDINAL.SOUTH,
+                    }
+                ]
+            },
+            {
+                type: TYPE.STAIRWELL,
+                id: 'stairwell',
+                x: s.int,
+                y: 12,
+                orientation: CARDINAL.NORTH,
+                width: s.stairs.width - s.int,
+                length: s.stairs.length - 2 - s.int - 12,
+                height: -7 * 12,
+            }
+        ]
     }
 ])
 
